@@ -1,2 +1,6 @@
 # AlgorithmTraining
-Algorithm Traning For Coding Test
+## 1주차
+> 9단계 -> 1,2,3  
+> 11단계 ->1  
+> 12단계 ->1,2  
+> 13 ->1  
