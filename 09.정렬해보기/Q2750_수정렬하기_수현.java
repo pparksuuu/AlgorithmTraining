@@ -27,7 +27,7 @@ public class Q2750_수정렬하기_수현 {
 		System.out.println();
 		
 		// 삽입
-		test = arr.clone(); // 얕은 복사?
+		test = arr.clone(); 
 		insertionSort(test, test.length);
 		printArr(test);
 		System.out.println();
