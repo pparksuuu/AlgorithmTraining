@@ -1,0 +1,155 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace InsertionSort
+{
+
+    class Sort
+    {
+        public static void Main(string[] args)
+        {
+            int length;
+
+            Console.WriteLine("배열 크기 입력 : ");
+            length = int.Parse(Console.ReadLine());
+
+            int[] Array_Data = new int[length];
+            Console.WriteLine("숫자 입력{0}", length);
+
+
+            for (int i = 0; i < length; i++)
+            {
+                //Array_Data[i] = int.Parse(Console.ReadLine());
+                Array_Data[i] = Console.Read();
+
+            }
+
+            Console.WriteLine("정렬 실행 전 데이터");
+            Sort.print(Array_Data);
+
+            Console.WriteLine("(1.삽입 2.거품 3.선택 4.퀵");
+            Console.WriteLine("정렬 선택 : ");
+            int SortNum = int.Parse(Console.ReadLine());
+
+            switch (SortNum)
+            {
+                case 1:
+                    //삽입 정렬 실행
+                    Sort.Insertionsort(ref Array_Data);
+                    break;
+                case 2:
+                    //거품 정렬 실행
+                    Sort.Bubblesort(ref Array_Data);
+                    break;
+                case 3:
+                    //선택 정렬 실행
+                    Sort.Selectionsort(ref Array_Data);
+                    break;
+                case 4:
+                    //퀵 정렬 실행
+                    Sort.Quicksort(ref Array_Data);
+                    break;
+            }
+
+            Console.WriteLine("삽입 정렬 완료 데이터");
+            Sort.print(Array_Data);
+        }
+
+        public static void print(int[] _Array_Data)
+        {
+            for (int i = 0; i < _Array_Data.Length; i++)
+            {
+                Console.WriteLine("배열[{0}] : {1} ", i, _Array_Data[i]);
+            }
+        }
+
+        
+        public static void Insertionsort(ref int[] _Array_Data)
+        {
+
+            for (int i = 1; i < _Array_Data.Length; i++)
+            {
+                int neighbor = i - 1;
+                int standard = _Array_Data[i];
+
+                while (neighbor >= 0 && standard < _Array_Data[neighbor])
+                {
+                    _Array_Data[neighbor + 1] = _Array_Data[neighbor];
+                    neighbor--;
+                }
+                _Array_Data[neighbor + 1] = standard;
+       
+                Console.WriteLine("{0}번 회전 후 데이터", i);
+                Sort.print(_Array_Data);
+            }
+
+        }
+        public static void Bubblesort(ref int[] _Array_Data)
+        {
+
+            int temp;
+            for (int i = 0; i < (_Array_Data.Length - 1); i++)
+            {
+                for (int j = 0; j < (_Array_Data.Length - 1) - i; j++)
+                {
+                    if (_Array_Data[j] > _Array_Data[j + 1])
+                    {
+                        temp = _Array_Data[j];
+                        _Array_Data[j] = _Array_Data[j + 1];
+                        _Array_Data[j + 1] = temp;
+                    }
+                }
+                Console.WriteLine("{0}번 회전 후 데이터", (i + 1));
+                Sort.print(_Array_Data);
+
+            }
+        }
+
+        public static void Selectionsort(ref int[] _Array_Data)
+        {
+          
+            int temp;
+            int min;
+            int index;
+
+            for (int i = 0; i < (_Array_Data.Length - 1); i++)
+            {
+                min = _Array_Data[i];
+                index = i;
+
+                for (int j = i; j < (_Array_Data.Length - 1); j++)
+                {
+                    if (min > _Array_Data[j + 1])
+                    {
+                        min = _Array_Data[j + 1];
+                        index = j + 1;
+                    }
+                }
+
+                if (_Array_Data[i] != min)
+                {
+                    temp = _Array_Data[i];
+                    _Array_Data[i] = min;
+                    _Array_Data[index] = temp;
+                }
+
+                Console.WriteLine( "{0}번 회전 후 데이터", (i + 1) );
+
+                Sort.print(_Array_Data);
+
+            }
+        }
+
+        public static void Quicksort(ref int[] _Array_Data)
+        {
+
+        }
+
+          
+        
+    }
+
+}
